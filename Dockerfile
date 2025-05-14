@@ -1,5 +1,5 @@
 # Basis-Image: schlankes Python-Image
-FROM python:3.11-slim
+FROM python:3.13-slim
 
 # Installiere notwendige Systempakete
 RUN apt-get update && apt-get install -y \
@@ -21,9 +21,8 @@ RUN cat requirements.txt && \
 # Kopiere den restlichen Code des Bots in das Image
 COPY . .
 
-# Erstelle die Cronjob-Datei (korrigierte Syntax)
-RUN echo "0 0 * * * python /app/bot.py >> /var/log/cron.log 2>&1" > /etc/cron.d/mastodon-bot-cron
-
+# Erstelle die Cronjob-Datei
+RUN echo "0 0 * * * /usr/local/bin/python /app/bot.py >> /var/log/cron.log 2>&1" > /etc/cron.d/mastodon-bot-cron
 # Setze die Berechtigungen für die Cronjob-Datei
 RUN chmod 0644 /etc/cron.d/mastodon-bot-cron
 
