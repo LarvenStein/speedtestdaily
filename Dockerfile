@@ -13,12 +13,15 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Installiere Python-Abhängigkeiten
-RUN pip install --no-cache-dir -r requirements.txt
+# Add debug output to see what's in the requirements file
+RUN cat requirements.txt && \
+    pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Kopiere den restlichen Code des Bots in das Image
 COPY . .
 
-# Erstelle die Cronjob-Datei
+# Erstelle die Cronjob-Datei (korrigierte Syntax)
 RUN echo "0 0 * * * python /app/bot.py >> /var/log/cron.log 2>&1" > /etc/cron.d/mastodon-bot-cron
 
 # Setze die Berechtigungen für die Cronjob-Datei
