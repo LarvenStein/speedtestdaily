@@ -16,7 +16,7 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler("/app/scheduler.log")
+        logging.FileHandler("scheduler.log")
     ]
 )
 logger = logging.getLogger(__name__)
@@ -68,6 +68,7 @@ def run_speedtest():
             test_values
         )
         caption = caption_raw['choices'][0]['message']['content']
+        caption += f"\n{test_url}"
         
         # Actually post it (or not)
         if MODE == "debug":
