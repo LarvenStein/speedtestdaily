@@ -2,7 +2,7 @@
 
 SpeedTest Daily is a Mastodon bot that posts a random speedtest.net result every day. 
 
-<a rel="me" href="https://mastodon.online/@SpeedtestDaily" target="_blank">![Mastodon Follow](https://img.shields.io/mastodon/follow/109502147114279183?domain=mastodon.online)</a>
+<a rel="me" href="https://social.eike.in/@SpeedtestDaily" target="_blank">![Mastodon Follow](https://img.shields.io/mastodon/follow/114523131205944200?domain=social.eike.in)</a>
 
 ## Features
 - Automatically performs a random speedtest.net test daily.
